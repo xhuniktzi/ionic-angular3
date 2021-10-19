@@ -17,4 +17,12 @@ export class ProductsApiService {
   findProductByCode(code: string): Observable<Product> {
     return this.api.get<Product>(`${environment.apiUrl}/products/${code}`);
   }
+
+  saveProduct(product: Product): Observable<any> {
+    return this.api.post(`${environment.apiUrl}/products`, product);
+  }
+
+  updateProduct(code: string, product: Product): Observable<any> {
+    return this.api.put(`${environment.apiUrl}/products/${code}`, product);
+  }
 }

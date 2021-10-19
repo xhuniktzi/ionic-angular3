@@ -1,6 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Productos</ion-title>
+    <ion-title slot="start">Productos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/products/create']">
+        <p slot="start">Nuevo Producto</p>
+        <ion-icon
+          slot="end"
+          name="add-circle-outline"
+          color="success"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

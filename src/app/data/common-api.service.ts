@@ -9,8 +9,16 @@ import { catchError } from 'rxjs/operators';
 export class CommonApiService {
   constructor(private http: HttpClient) {}
 
-  get<T>(url): Observable<T> {
+  get<T>(url: string): Observable<T> {
     return this.http.get<T>(url).pipe(catchError(this.handleError));
+  }
+
+  post(url: string, data: any): Observable<any> {
+    return this.http.post<any>(url, data).pipe(catchError(this.handleError));
+  }
+
+  put(url: string, data: any): Observable<any> {
+    return this.http.put<any>(url, data).pipe(catchError(this.handleError));
   }
 
   private handleError(err: HttpErrorResponse): Observable<never> {
