@@ -44,6 +44,15 @@
     <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
     Regresar a la lista de productos
   </ion-button>
+  <ion-button
+    expand="block"
+    fill="clear"
+    color="warning"
+    [routerLink]="['/products/edit', product?.code]"
+  >
+    <ion-icon name="pencil" slot="start"></ion-icon>
+    Editar Producto
+  </ion-button>
   <ion-button expand="block" fill="clear" color="danger">
     <ion-icon name="trash-outline" slot="start"></ion-icon>
     Eliminar producto

@@ -27,15 +27,18 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'products/edit/:code',
+    loadChildren: () =>
+      import('./products/product-edit/product-edit.module').then(
+        (m) => m.ProductEditPageModule
+      ),
+  },
+  {
     path: 'products/:code',
     loadChildren: () =>
       import('./products/product-detail/product-detail.module').then(
         (m) => m.ProductDetailPageModule
       ),
-  },
-  {
-    path: 'product-edit',
-    loadChildren: () => import('./products/product-edit/product-edit.module').then( m => m.ProductEditPageModule)
   },
 ];
 
