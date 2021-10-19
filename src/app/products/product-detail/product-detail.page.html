@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalles del producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-item>
+    <ion-icon name="code-outline" slot="start"></ion-icon>
+    <ion-label>Codigo</ion-label>
+    <ion-text>
+      <p>{{ product?.code }}</p>
+    </ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="pricetags-outline" slot="start"></ion-icon>
+    <ion-label>Nombre</ion-label>
+    <ion-text>
+      <p>{{ product?.name }}</p>
+    </ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="document-text-outline" slot="start"></ion-icon>
+    <ion-label>Descripción</ion-label>
+    <ion-text>
+      <p>{{ product?.description }}</p>
+    </ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="cash-outline" slot="start"></ion-icon>
+    <ion-label>Precio</ion-label>
+    <ion-text>
+      <p>{{ product?.price | currency: "GTQ":"symbol-narrow":"1.2-2" }}</p>
+    </ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="calculator-outline" slot="start"></ion-icon>
+    <ion-label>Cantidad minima</ion-label>
+    <ion-text>
+      <p>{{ product?.min_Quantity | number }}</p>
+    </ion-text>
+  </ion-item>
+  <ion-button expand="block" fill="clear" [routerLink]="['/products']">
+    <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+    Regresar a la lista de productos
+  </ion-button>
+</ion-content>

@@ -4,9 +4,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
   <ion-list>
-    <ion-item *ngFor="let item of products">
+    <ion-item
+      *ngFor="let item of products"
+      [routerLink]="['/products', item.code]"
+    >
       <ion-icon name="cube-outline" slot="start"></ion-icon>
       <ion-label>
         <h2>{{ item.code }} - {{ item.name }}</h2>

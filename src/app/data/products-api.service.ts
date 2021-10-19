@@ -13,4 +13,8 @@ export class ProductsApiService {
   getAllProducts(): Observable<Product[]> {
     return this.api.get<Product[]>(`${environment.apiUrl}/products`);
   }
+
+  findProductByCode(code: string): Observable<Product> {
+    return this.api.get<Product>(`${environment.apiUrl}/products/${code}`);
+  }
 }
