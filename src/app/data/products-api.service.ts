@@ -25,4 +25,8 @@ export class ProductsApiService {
   updateProduct(code: string, product: Product): Observable<any> {
     return this.api.put(`${environment.apiUrl}/products/${code}`, product);
   }
+
+  deleteProduct(code: string): Observable<any> {
+    return this.api.delete(`${environment.apiUrl}/products/${code}`);
+  }
 }

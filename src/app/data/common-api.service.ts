@@ -21,6 +21,10 @@ export class CommonApiService {
     return this.http.put<any>(url, data).pipe(catchError(this.handleError));
   }
 
+  delete(url: string): Observable<any> {
+    return this.http.delete(url).pipe(catchError(this.handleError));
+  }
+
   private handleError(err: HttpErrorResponse): Observable<never> {
     let errorMessage = '';
     console.error(err);

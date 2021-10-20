@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { Product } from 'src/app/common/product';
 import { ProductsApiService } from 'src/app/data/products-api.service';
 
@@ -13,7 +14,9 @@ export class ProductDetailPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private productApi: ProductsApiService
+    private router: Router,
+    private productApi: ProductsApiService,
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {}
@@ -22,5 +25,29 @@ export class ProductDetailPage implements OnInit {
     this.productApi.findProductByCode(code).subscribe({
       next: (data) => (this.product = data),
     });
+  }
+
+  async delete() {
+    const alert = await this.alertController.create({
+      message: `¿Esta seguro que desea eliminar el producto: ${this.product?.code} - ${this.product?.name}?`,
+      buttons: [
+        {
+          text: 'SI',
+          handler: () => {
+            this.productApi.deleteProduct(this.product?.code).subscribe({
+              next: () => {
+                this.router.navigate(['/products']);
+              },
+            });
+          },
+        },
+        {
+          text: 'NO',
+          role: 'cancel',
+        },
+      ],
+    });
+
+    await alert.present();
   }
 }
