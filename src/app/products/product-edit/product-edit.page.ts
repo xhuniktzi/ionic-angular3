@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { Product } from 'src/app/common/product';
 import { ProductsApiService } from 'src/app/data/products-api.service';
 
@@ -22,7 +23,8 @@ export class ProductEditPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private productApi: ProductsApiService
+    private productApi: ProductsApiService,
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {}
@@ -33,9 +35,47 @@ export class ProductEditPage implements OnInit {
     });
   }
 
-  submit(): void {
-    this.productApi.updateProduct(this.product.code, this.product).subscribe({
-      next: () => this.router.navigate(['/products', this.product.code]),
-    });
+  async submit() {
+    if (
+      this.product.code === null ||
+      this.product.code.match(/^ *$/) !== null
+    ) {
+      const msg = await this.alertController.create({
+        message: 'Debe ingresar un codigo',
+        buttons: ['OK'],
+      });
+      await msg.present();
+    } else if (
+      this.product.name === null ||
+      this.product.name.match(/^ *$/) !== null
+    ) {
+      const msg = await this.alertController.create({
+        message: 'Debe ingresar un nombre',
+        buttons: ['OK'],
+      });
+      await msg.present();
+    } else if (
+      this.product.price === undefined ||
+      !(this.product.price >= 0.01)
+    ) {
+      const msg = await this.alertController.create({
+        message: 'Debe ingresar un precio valido',
+        buttons: ['OK'],
+      });
+      await msg.present();
+    } else if (
+      this.product.min_Quantity === undefined ||
+      !(this.product.min_Quantity >= 1)
+    ) {
+      const msg = await this.alertController.create({
+        message: 'Debe ingresar una cantidad minima valida',
+        buttons: ['OK'],
+      });
+      await msg.present();
+    } else {
+      this.productApi.updateProduct(this.product.code, this.product).subscribe({
+        next: () => this.router.navigate(['/products', this.product.code]),
+      });
+    }
   }
 }
