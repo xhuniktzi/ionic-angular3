@@ -16,18 +16,10 @@
 
 <ion-content fullscreen>
   <ion-list>
-    <ion-item
+    <app-product-item
       *ngFor="let item of products"
-      [routerLink]="['/products', item.code]"
-    >
-      <ion-icon name="cube-outline" slot="start"></ion-icon>
-      <ion-label>
-        <h2>{{ item.code }} - {{ item.name }}</h2>
-        <p>
-          Precio: {{ item.price | currency: "GTQ":"symbol-narrow":"1.2-2" }}
-        </p>
-      </ion-label>
-      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
-    </ion-item>
+      [product]="item"
+      [routerLink]="['/products', item?.code]"
+    ></app-product-item>
   </ion-list>
 </ion-content>

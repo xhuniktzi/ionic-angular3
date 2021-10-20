@@ -29,7 +29,7 @@ export class ProductDetailPage implements OnInit {
 
   async delete() {
     const alert = await this.alertController.create({
-      message: `¿Esta seguro que desea eliminar el producto: ${this.product?.code} - ${this.product?.name}?`,
+      message: `¿Esta seguro que desea eliminar el producto: "${this.product?.code} - ${this.product?.name}"?`,
       buttons: [
         {
           text: 'SI',
