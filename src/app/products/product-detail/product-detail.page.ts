@@ -38,6 +38,13 @@ export class ProductDetailPage implements OnInit {
               next: () => {
                 this.router.navigate(['/products']);
               },
+              error: async (err) => {
+                const msg = await this.alertController.create({
+                  message: `Error: ${err}`,
+                  buttons: ['OK'],
+                });
+                await msg.present();
+              },
             });
           },
         },
