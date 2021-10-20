@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
 import { Product } from '../../common/product';
 import { ProductsApiService } from '../../data/products-api.service';
 
