@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Product } from 'src/app/common/product';
 import { ProductsApiService } from 'src/app/data/products-api.service';
+import { FeedbackService } from 'src/app/services/feedback.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -16,7 +17,8 @@ export class ProductDetailPage implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private productApi: ProductsApiService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private feedbackService: FeedbackService
   ) {}
 
   ngOnInit() {}
@@ -39,11 +41,7 @@ export class ProductDetailPage implements OnInit {
                 this.router.navigate(['/products']);
               },
               error: async (err) => {
-                const msg = await this.alertController.create({
-                  message: `Error: ${err}`,
-                  buttons: ['OK'],
-                });
-                await msg.present();
+                this.feedbackService.showInfo(`Error: ${err}`);
               },
             });
           },
