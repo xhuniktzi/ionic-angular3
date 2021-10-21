@@ -1,5 +1,14 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button expand="block" fill="clear" [routerLink]="['/products']">
+        <ion-icon
+          name="arrow-back-outline"
+          color="tertiary"
+          slot="start"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>Detalles del producto</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -40,10 +49,6 @@
       <p>{{ product?.min_Quantity | number }}</p>
     </ion-text>
   </ion-item>
-  <ion-button expand="block" fill="clear" [routerLink]="['/products']">
-    <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
-    Regresar a la lista de productos
-  </ion-button>
   <ion-button
     expand="block"
     fill="clear"
