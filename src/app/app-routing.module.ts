@@ -68,6 +68,13 @@ const routes: Routes = [
         (m) => m.ClientDetailPageModule
       ),
   },
+  {
+    path: 'reports',
+    loadChildren: () =>
+      import('./reports/report-query/report-query.module').then(
+        (m) => m.ReportQueryPageModule
+      ),
+  },
 ];
 
 @NgModule({
