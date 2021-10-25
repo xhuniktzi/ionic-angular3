@@ -55,6 +55,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'clients/edit/:id',
+    loadChildren: () =>
+      import('./clients/client-edit/client-edit.module').then(
+        (m) => m.ClientEditPageModule
+      ),
+  },
+  {
     path: 'clients/:id',
     loadChildren: () =>
       import('./clients/client-detail/client-detail.module').then(

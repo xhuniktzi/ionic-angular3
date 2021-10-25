@@ -22,6 +22,10 @@ export class ClientsApiService {
     return this.api.post(`${environment.apiUrl}/clients`, client);
   }
 
+  updateClient(id: number, client: Client): Observable<any> {
+    return this.api.put(`${environment.apiUrl}/clients/${id}`, client);
+  }
+
   deleteClient(id: number): Observable<any> {
     return this.api.delete(`${environment.apiUrl}/clients/${id}`);
   }
