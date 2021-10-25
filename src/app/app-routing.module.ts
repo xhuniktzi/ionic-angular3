@@ -40,6 +40,20 @@ const routes: Routes = [
         (m) => m.ProductDetailPageModule
       ),
   },
+  {
+    path: 'clients',
+    loadChildren: () =>
+      import('./clients/client-list/client-list.module').then(
+        (m) => m.ClientListPageModule
+      ),
+  },
+  {
+    path: 'clients/:id',
+    loadChildren: () =>
+      import('./clients/client-detail/client-detail.module').then(
+        (m) => m.ClientDetailPageModule
+      ),
+  },
 ];
 
 @NgModule({

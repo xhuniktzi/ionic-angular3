@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button expand="block" fill="clear" [routerLink]="['/clients']">
+        <ion-icon
+          name="arrow-back-outline"
+          color="tertiary"
+          slot="start"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Detalles del cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-item>
+    <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+    <ion-label>Nombre</ion-label>
+    <ion-text>
+      <p>{{ client?.name }}</p>
+    </ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="bookmark-outline" slot="start"></ion-icon>
+    <ion-label>Nit</ion-label>
+    <ion-text>
+      <p>{{ client?.nit }}</p>
+    </ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="call-outline" slot="start"></ion-icon>
+    <ion-label>Numero de telefono</ion-label>
+    <ion-text>
+      <p>{{ client?.phone_Number }}</p>
+    </ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="home-outline" slot="start"></ion-icon>
+    <ion-label>Dirección</ion-label>
+    <ion-text>
+      <p>{{ client?.direction }}</p>
+    </ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="mail-open-outline" slot="start"></ion-icon>
+    <ion-label>Correo Electronico</ion-label>
+    <ion-text>
+      <p>{{ client?.e_Mail }}</p>
+    </ion-text>
+  </ion-item>
+  <ion-button
+    expand="block"
+    fill="clear"
+    color="warning"
+    [routerLink]="['/clients/edit', client?.client_Id]"
+  >
+    <ion-icon name="pencil" slot="start"></ion-icon>
+    Editar Cliente
+  </ion-button>
+  <ion-button expand="block" fill="clear" color="danger" (click)="delete()">
+    <ion-icon name="trash-outline" slot="start"></ion-icon>
+    Eliminar Cliente
+  </ion-button>
+</ion-content>

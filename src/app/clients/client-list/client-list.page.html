@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title slot="start">Clientes</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/clients/create']">
+        <p slot="start">Nuevo Cliente</p>
+        <ion-icon
+          slot="end"
+          name="add-circle-outline"
+          color="success"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-list>
+    <app-client-item
+      *ngFor="let item of clients"
+      [client]="item"
+      [routerLink]="['/clients', item?.client_Id]"
+    ></app-client-item>
+  </ion-list>
+</ion-content>
