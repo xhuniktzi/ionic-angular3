@@ -29,4 +29,31 @@ export class ClientDetailPage implements OnInit {
       next: (data) => (this.client = data),
     });
   }
+
+  async delete() {
+    const alert = await this.alertController.create({
+      message: `¿Esta seguro que desea eliminar al cliente: "${this.client?.name}"?`,
+      buttons: [
+        {
+          text: 'SI',
+          handler: () => {
+            this.clientApi.deleteClient(this.client?.client_Id).subscribe({
+              next: () => {
+                this.router.navigate(['/clients']);
+              },
+              error: async (err) => {
+                this.feedbackService.showInfo(`Error: ${err}`);
+              },
+            });
+          },
+        },
+        {
+          text: 'NO',
+          role: 'cancel',
+        },
+      ],
+    });
+
+    await alert.present();
+  }
 }

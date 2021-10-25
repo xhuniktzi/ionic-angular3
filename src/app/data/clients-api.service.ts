@@ -17,4 +17,12 @@ export class ClientsApiService {
   findClientById(id: number): Observable<Client> {
     return this.api.get<Client>(`${environment.apiUrl}/clients/${id}`);
   }
+
+  saveClient(client: Client): Observable<any> {
+    return this.api.post(`${environment.apiUrl}/clients`, client);
+  }
+
+  deleteClient(id: number): Observable<any> {
+    return this.api.delete(`${environment.apiUrl}/clients/${id}`);
+  }
 }

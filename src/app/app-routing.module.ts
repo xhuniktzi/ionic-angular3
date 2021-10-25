@@ -48,6 +48,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'clients/create',
+    loadChildren: () =>
+      import('./clients/client-create/client-create.module').then(
+        (m) => m.ClientCreatePageModule
+      ),
+  },
+  {
     path: 'clients/:id',
     loadChildren: () =>
       import('./clients/client-detail/client-detail.module').then(
