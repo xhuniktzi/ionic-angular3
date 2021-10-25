@@ -7,14 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ReportQueryPageRoutingModule } from './report-query-routing.module';
 
 import { ReportQueryPage } from './report-query.page';
+import { ReportListComponent } from '../report-list/report-list.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ReportQueryPageRoutingModule
+    ReportQueryPageRoutingModule,
   ],
-  declarations: [ReportQueryPage]
+  declarations: [ReportQueryPage, ReportListComponent],
 })
 export class ReportQueryPageModule {}

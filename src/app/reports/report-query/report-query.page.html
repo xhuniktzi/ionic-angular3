@@ -1,9 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>report-query</ion-title>
+    <ion-title>Reportes</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content fullscreen>
+  <ion-item>
+    <ion-icon name="code-outline" slot="start"></ion-icon>
+    <ion-label position="stacked">Fecha de inicio</ion-label>
+    <ion-input type="date" [(ngModel)]="query.Start_Date"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="code-outline" slot="start"></ion-icon>
+    <ion-label position="stacked">Fecha de fin</ion-label>
+    <ion-input type="date" [(ngModel)]="query.End_Date"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="code-outline" slot="start"></ion-icon>
+    <ion-label position="floating">Serie de la factura</ion-label>
+    <ion-input type="text" [(ngModel)]="query.Serial_Number"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="code-outline" slot="start"></ion-icon>
+    <ion-label position="floating">Numero de factura</ion-label>
+    <ion-input type="number" [(ngModel)]="query.Invoice_Number"></ion-input>
+  </ion-item>
+  <ion-button expand="block" fill="clear" color="success" (click)="submit()">
+    <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+    Consultar
+  </ion-button>
 </ion-content>

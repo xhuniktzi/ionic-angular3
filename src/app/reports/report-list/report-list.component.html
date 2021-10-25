@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button expand="block" fill="clear" (click)="dismiss()">
+        <ion-icon
+          name="arrow-back-outline"
+          color="tertiary"
+          slot="start"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Resultados de busqueda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-item *ngFor="let item of results">
+    <ion-label>
+      <h2>{{ item.serial_Number }} - {{ item.invoice_Number }}</h2>
+      <p>Cliente: {{ item.client_Name }}</p>
+      <p>Sucursal: {{ item.branch_Name }}</p>
+      <p>Producto: {{ item.product_Name }}</p>
+      <p>Cantidad: {{ item.quantity | number }}</p>
+      <p>Total: {{ item.total | currency: "GTQ":"symbol-narrow":"1.2-2" }}</p>
+      <p>
+        Total de la factura:
+        {{ item.order_Total | currency: "GTQ":"symbol-narrow":"1.2-2" }}
+      </p>
+    </ion-label>
+    <!-- <ion-icon name="chevron-forward-outline" slot="end"></ion-icon> -->
+  </ion-item>
+</ion-content>
