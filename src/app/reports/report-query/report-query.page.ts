@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Client } from 'src/app/common/client';
 import { ReportQuery } from 'src/app/common/report-query';
 import { ReportResult } from 'src/app/common/report-result';
 import { InvoiceApiService } from 'src/app/data/invoice-api.service';
+import { ClientPickerComponent } from 'src/app/shared/client-picker/client-picker.component';
 import { ReportListComponent } from '../report-list/report-list.component';
 
 @Component({
@@ -11,6 +13,8 @@ import { ReportListComponent } from '../report-list/report-list.component';
   styleUrls: ['./report-query.page.scss'],
 })
 export class ReportQueryPage implements OnInit {
+  currentClient: Client | undefined;
+
   query: ReportQuery = {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     Start_Date: new Date().toISOString().split('T')[0],
@@ -40,7 +44,6 @@ export class ReportQueryPage implements OnInit {
     this.invoiceApiService.filterInvoices(this.query).subscribe({
       next: async (data) => {
         results = data;
-        // console.log(results);
         const modal = await this.modalController.create({
           component: ReportListComponent,
           componentProps: {
@@ -51,14 +54,21 @@ export class ReportQueryPage implements OnInit {
         await modal.present();
       },
     });
+  }
 
-    // const modal = await this.modalController.create({
-    //   component: ReportListComponent,
-    //   componentProps: {
-    //     results,
-    //   },
-    // });
+  async selectClient() {
+    const modal = await this.modalController.create({
+      component: ClientPickerComponent,
+    });
 
-    // await modal.present();
+    modal.onWillDismiss().then((info) => {
+      this.setClient(info.data.value);
+    });
+    modal.present();
+  }
+
+  private setClient(client: Client | null): void {
+    this.currentClient = client;
+    this.query.Client_Id = client?.client_Id;
   }
 }

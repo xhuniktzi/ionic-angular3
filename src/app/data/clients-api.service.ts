@@ -18,6 +18,12 @@ export class ClientsApiService {
     return this.api.get<Client>(`${environment.apiUrl}/clients/${id}`);
   }
 
+  findByNameAndNit(name: string, nit: string): Observable<Client[]> {
+    return this.api.get<Client[]>(
+      `${environment.apiUrl}/clients/findByNameAndNit?name=${name}&nit=${nit}`
+    );
+  }
+
   saveClient(client: Client): Observable<any> {
     return this.api.post(`${environment.apiUrl}/clients`, client);
   }
