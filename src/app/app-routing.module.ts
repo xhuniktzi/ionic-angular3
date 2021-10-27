@@ -74,7 +74,11 @@ const routes: Routes = [
       import('./reports/report-query/report-query.module').then(
         (m) => m.ReportQueryPageModule
       ),
+  },  {
+    path: 'invoices',
+    loadChildren: () => import('./invoices/invoices.module').then( m => m.InvoicesPageModule)
   },
+
 ];
 
 @NgModule({
