@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Branch } from 'src/app/common/branch';
 import { Client } from 'src/app/common/client';
+import { Product } from 'src/app/common/product';
 import { ReportQuery } from 'src/app/common/report-query';
 import { ReportResult } from 'src/app/common/report-result';
 import { InvoiceApiService } from 'src/app/data/invoice-api.service';
 import { BranchPickerComponent } from 'src/app/shared/branch-picker/branch-picker.component';
 import { ClientPickerComponent } from 'src/app/shared/client-picker/client-picker.component';
+import { ProductPickerComponent } from 'src/app/shared/product-picker/product-picker.component';
 import { ReportListComponent } from '../report-list/report-list.component';
 
 @Component({
@@ -17,6 +19,7 @@ import { ReportListComponent } from '../report-list/report-list.component';
 export class ReportQueryPage implements OnInit {
   currentClient: Client | undefined;
   currentBranch: Branch | undefined;
+  currentProduct: Product | undefined;
 
   query: ReportQuery = {
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -82,6 +85,18 @@ export class ReportQueryPage implements OnInit {
     modal.present();
   }
 
+  async selectProduct() {
+    const modal = await this.modalController.create({
+      component: ProductPickerComponent,
+    });
+
+    modal.onWillDismiss().then((info) => {
+      this.setProduct(info.data.value);
+    });
+
+    modal.present();
+  }
+
   private setClient(client: Client | null): void {
     this.currentClient = client;
     this.query.Client_Id = client?.client_Id;
@@ -90,5 +105,10 @@ export class ReportQueryPage implements OnInit {
   private setBranch(branch: Branch | null): void {
     this.currentBranch = branch;
     this.query.Branch_Id = branch?.branch_Id;
+  }
+
+  private setProduct(product: Product | null): void {
+    this.currentProduct = product;
+    this.query.Product_Id = product?.product_Id;
   }
 }

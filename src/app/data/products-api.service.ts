@@ -18,6 +18,12 @@ export class ProductsApiService {
     return this.api.get<Product>(`${environment.apiUrl}/products/${code}`);
   }
 
+  findProductByName(name: string): Observable<Product[]> {
+    return this.api.get<Product[]>(
+      `${environment.apiUrl}/products/findByName/${name}`
+    );
+  }
+
   saveProduct(product: Product): Observable<any> {
     return this.api.post(`${environment.apiUrl}/products`, product);
   }

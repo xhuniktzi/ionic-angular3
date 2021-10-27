@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button expand="block" fill="clear" (click)="dismiss()">
+        <ion-icon
+          name="arrow-back-outline"
+          color="tertiary"
+          slot="start"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Buscar producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar
+    placeholder="Buscar por Nombre"
+    (ionChange)="search()"
+    [(ngModel)]="name"
+    show-clear-button="never"
+    ngDefaultControl
+  ></ion-searchbar>
+  <ion-list>
+    <app-product-item
+      *ngFor="let item of results"
+      [product]="item"
+      (click)="select(item)"
+    ></app-product-item>
+  </ion-list>
+</ion-content>
