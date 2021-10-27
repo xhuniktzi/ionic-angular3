@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Branch } from 'src/app/common/branch';
 import { Client } from 'src/app/common/client';
 import { ReportQuery } from 'src/app/common/report-query';
 import { ReportResult } from 'src/app/common/report-result';
 import { InvoiceApiService } from 'src/app/data/invoice-api.service';
+import { BranchPickerComponent } from 'src/app/shared/branch-picker/branch-picker.component';
 import { ClientPickerComponent } from 'src/app/shared/client-picker/client-picker.component';
 import { ReportListComponent } from '../report-list/report-list.component';
 
@@ -14,6 +16,7 @@ import { ReportListComponent } from '../report-list/report-list.component';
 })
 export class ReportQueryPage implements OnInit {
   currentClient: Client | undefined;
+  currentBranch: Branch | undefined;
 
   query: ReportQuery = {
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -67,8 +70,25 @@ export class ReportQueryPage implements OnInit {
     modal.present();
   }
 
+  async selectBranch() {
+    const modal = await this.modalController.create({
+      component: BranchPickerComponent,
+    });
+
+    modal.onWillDismiss().then((info) => {
+      this.setBranch(info.data.value);
+    });
+
+    modal.present();
+  }
+
   private setClient(client: Client | null): void {
     this.currentClient = client;
     this.query.Client_Id = client?.client_Id;
+  }
+
+  private setBranch(branch: Branch | null): void {
+    this.currentBranch = branch;
+    this.query.Branch_Id = branch?.branch_Id;
   }
 }
