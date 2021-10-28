@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button expand="block" fill="clear" (click)="dismiss()">
+        <ion-icon
+          name="arrow-back-outline"
+          color="tertiary"
+          slot="start"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Agregar producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-item detail="false" (click)="selectProduct()">
+    <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+    <ion-label>
+      <h2>Producto: {{ currentProduct?.name }}</h2>
+      <p>
+        {{ currentProduct?.price | currency: "GTQ":"symbol-narrow":"1.2-2" }}
+      </p>
+    </ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="calculator-outline" slot="start"></ion-icon>
+    <ion-label position="floating">Cantidad</ion-label>
+    <ion-input type="number" [(ngModel)]="quantity"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" fill="clear" color="success" (click)="select()">
+    <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+    Agregar Producto
+  </ion-button>
+</ion-content>

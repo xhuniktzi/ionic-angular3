@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button expand="block" fill="clear" (click)="dismiss()">
+        <ion-icon
+          name="arrow-back-outline"
+          color="tertiary"
+          slot="start"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Carrito de compras</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-item *ngFor="let item of products">
+    <ion-label>
+      <h2>{{ item.product.code }} - {{ item.product.name }}</h2>
+      <p>
+        Precio:
+        {{ item.product.price | currency: "GTQ":"symbol-narrow":"1.2-2" }}
+      </p>
+      <p>Cantidad: {{ item.quantity | number }}</p>
+      <p>Total: {{ item.total | currency: "GTQ":"symbol-narrow":"1.2-2" }}</p>
+    </ion-label>
+    <ion-icon
+      name="trash-outline"
+      (click)="delete(item.product.product_Id)"
+    ></ion-icon>
+  </ion-item>
+</ion-content>
