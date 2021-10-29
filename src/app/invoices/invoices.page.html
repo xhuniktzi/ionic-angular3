@@ -6,7 +6,7 @@
 
 <ion-content fullscreen>
   <ion-item>
-    <ion-icon name="code-outline" slot="start"></ion-icon>
+    <ion-icon name="calendar-outline" slot="start"></ion-icon>
     <ion-label position="stacked">Fecha</ion-label>
     <ion-input type="date" [(ngModel)]="orderDate"></ion-input>
   </ion-item>
@@ -31,7 +31,7 @@
   </ion-item>
 
   <ion-item detail="false" (click)="selectBranch()">
-    <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+    <ion-icon name="storefront-outline" slot="start"></ion-icon>
     <ion-label>
       <h2>Sucursal: {{ currentBranch?.name }}</h2>
       <p>{{ currentBranch?.direction }}</p>
@@ -40,21 +40,21 @@
   </ion-item>
 
   <ion-item detail="false" (click)="addProduct()">
-    <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+    <ion-icon name="cube-outline" slot="start"></ion-icon>
     <ion-label>
       <h2>Agregar Producto</h2>
     </ion-label>
     <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
   </ion-item>
   <ion-item detail="false" (click)="viewProducts()">
-    <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+    <ion-icon name="cube-outline" slot="start"></ion-icon>
     <ion-label>
       <h2>Ver Productos</h2>
     </ion-label>
     <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
   </ion-item>
   <ion-item>
-    <ion-icon name="document-text-outline" slot="start"></ion-icon>
+    <ion-icon name="receipt-outline" slot="start"></ion-icon>
     <ion-label>Total</ion-label>
     <ion-text>
       <p>

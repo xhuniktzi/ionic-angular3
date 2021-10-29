@@ -6,12 +6,12 @@
 
 <ion-content fullscreen>
   <ion-item>
-    <ion-icon name="code-outline" slot="start"></ion-icon>
+    <ion-icon name="calendar-outline" slot="start"></ion-icon>
     <ion-label position="stacked">Fecha de inicio</ion-label>
     <ion-input type="date" [(ngModel)]="query.Start_Date"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-icon name="code-outline" slot="start"></ion-icon>
+    <ion-icon name="calendar-outline" slot="start"></ion-icon>
     <ion-label position="stacked">Fecha de fin</ion-label>
     <ion-input type="date" [(ngModel)]="query.End_Date"></ion-input>
   </ion-item>
@@ -36,7 +36,7 @@
   </ion-item>
 
   <ion-item detail="false" (click)="selectBranch()">
-    <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+    <ion-icon name="storefront-outline" slot="start"></ion-icon>
     <ion-label>
       <h2>Sucursal: {{ currentBranch?.name }}</h2>
       <p>{{ currentBranch?.direction }}</p>
@@ -45,7 +45,7 @@
   </ion-item>
 
   <ion-item detail="false" (click)="selectProduct()">
-    <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+    <ion-icon name="cube-outline" slot="start"></ion-icon>
     <ion-label>
       <h2>Producto: {{ currentProduct?.name }}</h2>
       <p>
