@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { InvoiceDetail } from 'src/app/common/invoice-detail';
 import { Product } from 'src/app/common/product';
+import { FeedbackService } from 'src/app/services/feedback.service';
 import { ProductPickerComponent } from 'src/app/shared/product-picker/product-picker.component';
 
 @Component({
@@ -13,7 +14,10 @@ export class SelectProductComponent implements OnInit {
   currentProduct: Product | undefined;
   quantity: number | undefined;
 
-  constructor(private modalController: ModalController) {}
+  constructor(
+    private modalController: ModalController,
+    private feedbackService: FeedbackService
+  ) {}
 
   ngOnInit() {}
 
@@ -24,15 +28,21 @@ export class SelectProductComponent implements OnInit {
   }
 
   select() {
-    const detail: InvoiceDetail = {
-      product: this.currentProduct,
-      quantity: this.quantity,
-      total: this.currentProduct.price * this.quantity,
-    };
+    if (this.currentProduct === undefined || this.currentProduct === null) {
+      this.feedbackService.showInfo('Debes seleccionar un producto');
+    } else if (!(this.quantity >= 1)) {
+      this.feedbackService.showInfo('La cantidad debe ser mayor o igual a 1');
+    } else {
+      const detail: InvoiceDetail = {
+        product: this.currentProduct,
+        quantity: this.quantity,
+        total: this.currentProduct.price * this.quantity,
+      };
 
-    this.modalController.dismiss({
-      value: detail,
-    });
+      this.modalController.dismiss({
+        value: detail,
+      });
+    }
   }
 
   async selectProduct() {

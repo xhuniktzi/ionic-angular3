@@ -8,17 +8,17 @@
   <ion-item>
     <ion-icon name="code-outline" slot="start"></ion-icon>
     <ion-label position="stacked">Fecha</ion-label>
-    <ion-input type="date"></ion-input>
+    <ion-input type="date" [(ngModel)]="orderDate"></ion-input>
   </ion-item>
   <ion-item>
     <ion-icon name="code-outline" slot="start"></ion-icon>
     <ion-label position="floating">Serie de la factura</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" [(ngModel)]="serial"></ion-input>
   </ion-item>
   <ion-item>
     <ion-icon name="code-outline" slot="start"></ion-icon>
     <ion-label position="floating">Numero de factura</ion-label>
-    <ion-input type="number"></ion-input>
+    <ion-input type="number" [(ngModel)]="invoiceNumber"></ion-input>
   </ion-item>
 
   <ion-item detail="false" (click)="selectClient()">
@@ -53,4 +53,17 @@
     </ion-label>
     <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
   </ion-item>
+  <ion-item>
+    <ion-icon name="document-text-outline" slot="start"></ion-icon>
+    <ion-label>Total</ion-label>
+    <ion-text>
+      <p>
+        {{ products | sum: "total" | currency: "GTQ":"symbol-narrow":"1.2-2" }}
+      </p>
+    </ion-text>
+  </ion-item>
+  <ion-button expand="block" fill="clear" color="success" (click)="submit()">
+    <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+    Crear factura
+  </ion-button>
 </ion-content>

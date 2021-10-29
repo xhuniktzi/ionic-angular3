@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { BranchPickerComponent } from './branch-picker/branch-picker.component';
 import { BranchItemComponent } from './branch-item/branch-item.component';
 import { ProductPickerComponent } from './product-picker/product-picker.component';
+import { SumPipe } from './sum.pipe';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ProductPickerComponent } from './product-picker/product-picker.componen
     ClientPickerComponent,
     BranchPickerComponent,
     ProductPickerComponent,
+    SumPipe,
   ],
   imports: [CommonModule, FormsModule],
   exports: [
@@ -25,6 +27,7 @@ import { ProductPickerComponent } from './product-picker/product-picker.componen
     ClientPickerComponent,
     BranchPickerComponent,
     ProductPickerComponent,
+    SumPipe,
   ],
 })
 export class SharedModule {}
