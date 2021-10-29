@@ -114,9 +114,15 @@ export class InvoicesPage implements OnInit {
       this.invoiceNumber === null
     ) {
       this.feedbackService.showInfo('Debe ingresar un numero de factura');
-    } else if (this.selectClient === undefined) {
+    } else if (
+      this.currentClient === undefined ||
+      this.currentClient === null
+    ) {
       this.feedbackService.showInfo('Debe seleccionar un cliente');
-    } else if (this.selectBranch === undefined) {
+    } else if (
+      this.currentBranch === undefined ||
+      this.currentBranch === null
+    ) {
       this.feedbackService.showInfo('Debe seleccionar una sucursal');
     } else if (!(this.products.length > 0)) {
       this.feedbackService.showInfo('Debe tener al menos un producto agregado');
