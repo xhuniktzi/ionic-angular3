@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button expand="block" fill="clear" (click)="dismiss()">
+        <ion-icon
+          name="arrow-back-outline"
+          color="tertiary"
+          slot="start"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title
+      >Factura {{ invoice?.serial_Number }} -
+      {{ invoice?.invoice_Number }}</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-item>
+    <h2>Cliente</h2>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="code-outline" slot="start"></ion-icon>
+    <ion-label>Nombre</ion-label>
+    <ion-text>
+      <p>{{ invoice?.client_Name }}</p>
+    </ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="code-outline" slot="start"></ion-icon>
+    <ion-label>Dirección</ion-label>
+    <ion-text>
+      <p>{{ invoice?.client_Direction }}</p>
+    </ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="code-outline" slot="start"></ion-icon>
+    <ion-label>Nit</ion-label>
+    <ion-text>
+      <p>{{ invoice?.client_Nit }}</p>
+    </ion-text>
+  </ion-item>
+  <ion-item>
+    <h2>Sucursal</h2>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="code-outline" slot="start"></ion-icon>
+    <ion-label>Nombre</ion-label>
+    <ion-text>
+      <p>{{ invoice?.branch_Name }}</p>
+    </ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="code-outline" slot="start"></ion-icon>
+    <ion-label>Dirección</ion-label>
+    <ion-text>
+      <p>{{ invoice?.branch_Direction }}</p>
+    </ion-text>
+  </ion-item>
+  <ion-item>
+    <h2>Información de la factura</h2>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="code-outline" slot="start"></ion-icon>
+    <ion-label>Total</ion-label>
+    <ion-text>
+      <p>{{ invoice?.total | currency: "GTQ":"symbol-narrow":"1.2-2" }}</p>
+    </ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="code-outline" slot="start"></ion-icon>
+    <ion-label>Fecha</ion-label>
+    <ion-text>
+      <p>{{ invoice?.order_Date | parseDate }}</p>
+    </ion-text>
+  </ion-item>
+  <ion-item>
+    <h2>Productos</h2>
+  </ion-item>
+  <ion-list>
+    <ion-item *ngFor="let item of invoice?.product_Detail">
+      <ion-label>
+        <h2>{{ item.product_Code }} - {{ item.product_Name }}</h2>
+        <p>Cantidad: {{ item.quantity | number }}</p>
+        <p>
+          Precio: {{ item.price | currency: "GTQ":"symbol-narrow":"1.2-2" }}
+        </p>
+        <p>Total: {{ item.total | currency: "GTQ":"symbol-narrow":"1.2-2" }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

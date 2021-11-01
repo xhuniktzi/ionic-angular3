@@ -8,6 +8,7 @@ import { BranchPickerComponent } from './branch-picker/branch-picker.component';
 import { BranchItemComponent } from './branch-item/branch-item.component';
 import { ProductPickerComponent } from './product-picker/product-picker.component';
 import { SumPipe } from './sum.pipe';
+import { ParseDatePipe } from './parse-date.pipe';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { SumPipe } from './sum.pipe';
     BranchPickerComponent,
     ProductPickerComponent,
     SumPipe,
+    ParseDatePipe,
   ],
   imports: [CommonModule, FormsModule],
   exports: [
@@ -28,6 +30,7 @@ import { SumPipe } from './sum.pipe';
     BranchPickerComponent,
     ProductPickerComponent,
     SumPipe,
+    ParseDatePipe,
   ],
 })
 export class SharedModule {}

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ReportResult } from 'src/app/common/report-result';
+import { ReportInvoiceComponent } from '../report-invoice/report-invoice.component';
 
 @Component({
   selector: 'app-report-list',
@@ -16,5 +17,17 @@ export class ReportListComponent implements OnInit {
 
   dismiss() {
     this.modalController.dismiss();
+  }
+
+  async view(id: number) {
+    // console.log(id);
+    const modal = await this.modalController.create({
+      component: ReportInvoiceComponent,
+      componentProps: {
+        id,
+      },
+    });
+
+    modal.present();
   }
 }
