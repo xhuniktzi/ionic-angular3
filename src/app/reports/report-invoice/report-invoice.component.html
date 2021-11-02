@@ -18,64 +18,61 @@
 
 <ion-content fullscreen>
   <ion-item>
+    <ion-icon name="person-circle-outline" slot="start"></ion-icon>
     <h2>Cliente</h2>
   </ion-item>
   <ion-item>
-    <ion-icon name="code-outline" slot="start"></ion-icon>
     <ion-label>Nombre</ion-label>
     <ion-text>
       <p>{{ invoice?.client_Name }}</p>
     </ion-text>
   </ion-item>
   <ion-item>
-    <ion-icon name="code-outline" slot="start"></ion-icon>
     <ion-label>Dirección</ion-label>
     <ion-text>
       <p>{{ invoice?.client_Direction }}</p>
     </ion-text>
   </ion-item>
   <ion-item>
-    <ion-icon name="code-outline" slot="start"></ion-icon>
     <ion-label>Nit</ion-label>
     <ion-text>
       <p>{{ invoice?.client_Nit }}</p>
     </ion-text>
   </ion-item>
   <ion-item>
+    <ion-icon name="storefront-outline" slot="start"></ion-icon>
     <h2>Sucursal</h2>
   </ion-item>
   <ion-item>
-    <ion-icon name="code-outline" slot="start"></ion-icon>
     <ion-label>Nombre</ion-label>
     <ion-text>
       <p>{{ invoice?.branch_Name }}</p>
     </ion-text>
   </ion-item>
   <ion-item>
-    <ion-icon name="code-outline" slot="start"></ion-icon>
     <ion-label>Dirección</ion-label>
     <ion-text>
       <p>{{ invoice?.branch_Direction }}</p>
     </ion-text>
   </ion-item>
   <ion-item>
+    <ion-icon name="receipt-outline" slot="start"></ion-icon>
     <h2>Información de la factura</h2>
   </ion-item>
   <ion-item>
-    <ion-icon name="code-outline" slot="start"></ion-icon>
     <ion-label>Total</ion-label>
     <ion-text>
       <p>{{ invoice?.total | currency: "GTQ":"symbol-narrow":"1.2-2" }}</p>
     </ion-text>
   </ion-item>
   <ion-item>
-    <ion-icon name="code-outline" slot="start"></ion-icon>
     <ion-label>Fecha</ion-label>
     <ion-text>
       <p>{{ invoice?.order_Date | parseDate }}</p>
     </ion-text>
   </ion-item>
   <ion-item>
+    <ion-icon name="cube-outline" slot="start"></ion-icon>
     <h2>Productos</h2>
   </ion-item>
   <ion-list>
