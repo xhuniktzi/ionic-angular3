@@ -19,7 +19,7 @@
       <ion-label>
         <h2>{{ item.serial_Number }} - {{ item.invoice_Number }}</h2>
         <p>Cliente: {{ item.client_Name }} - {{ item.client_Nit }}</p>
-        <p>Sucursal: {{ item.branch_Name }} - {{ item.direction }}</p>
+        <p>Sucursal: {{ item.branch_Name }} - {{ item.branch_Direction }}</p>
         <p>Producto: {{ item.product_Code }} - {{ item.product_Name }}</p>
         <p>Cantidad: {{ item.quantity | number }}</p>
         <p>Total: {{ item.total | currency: "GTQ":"symbol-narrow":"1.2-2" }}</p>

@@ -1,3 +1,5 @@
+import { InvoiceDetail } from './invoice-detail';
+
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface PrintInvoice {
   serial_Number: string;
@@ -10,5 +12,5 @@ export interface PrintInvoice {
   branch_Direction: string;
   order_Date: string;
   total: number;
-  product_Detail;
+  product_Detail: InvoiceDetail[];
 }
