@@ -8,7 +8,7 @@
   <ion-item>
     <ion-icon name="calendar-outline" slot="start"></ion-icon>
     <ion-label position="stacked">Fecha</ion-label>
-    <ion-input type="date" [(ngModel)]="orderDate"></ion-input>
+    <ion-datetime display-timezone="utc" [(ngModel)]="orderDate"></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-icon name="code-outline" slot="start"></ion-icon>

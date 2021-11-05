@@ -8,12 +8,18 @@
   <ion-item>
     <ion-icon name="calendar-outline" slot="start"></ion-icon>
     <ion-label position="stacked">Fecha de inicio</ion-label>
-    <ion-input type="date" [(ngModel)]="query.Start_Date"></ion-input>
+    <ion-datetime
+      display-timezone="utc"
+      [(ngModel)]="query.Start_Date"
+    ></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-icon name="calendar-outline" slot="start"></ion-icon>
     <ion-label position="stacked">Fecha de fin</ion-label>
-    <ion-input type="date" [(ngModel)]="query.End_Date"></ion-input>
+    <ion-datetime
+      display-timezone="utc"
+      [(ngModel)]="query.End_Date"
+    ></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-icon name="code-outline" slot="start"></ion-icon>
