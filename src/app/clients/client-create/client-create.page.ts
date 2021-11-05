@@ -38,11 +38,32 @@ export class ClientCreatePage implements OnInit {
       this.client.nit.match(/^ *$/) !== null
     ) {
       this.feedbackService.showInfo('Debe ingresar un nit');
+    } else if (this.client.nit.match(/\d+-[\d\w]/gm)) {
+      this.feedbackService.showInfo('Debe ingresar un nit con formato valido');
     } else if (
       this.client.direction === null ||
       this.client.direction.match(/^ *$/) !== null
     ) {
       this.feedbackService.showInfo('Debe ingresar una direccion');
+    } else if (
+      !(
+        this.client.phone_Number === null ||
+        this.client.phone_Number.match(/^ *$/) !== null
+      ) &&
+      this.client.phone_Number.match(/[\d-]+/gm) === null
+    ) {
+      this.feedbackService.showInfo(
+        'Debe ingresar una numero de telefono valido'
+      );
+    } else if (
+      !(
+        this.client.e_Mail === null || this.client.e_Mail.match(/^ *$/) !== null
+      ) &&
+      this.client.e_Mail.match(/\w+@\w+\.\w+/gm) === null
+    ) {
+      this.feedbackService.showInfo(
+        'Debe ingresar una direccion de e-mail valida'
+      );
     } else {
       this.clientApi.saveClient(this.client).subscribe({
         next: (data) => {
