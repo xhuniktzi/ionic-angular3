@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { PrintInvoice } from 'src/app/common/print-invoice';
-import { InvoiceApiService } from 'src/app/data/invoice-api.service';
+import { ReportResult } from 'src/app/common/report-result';
 
 @Component({
   selector: 'app-report-invoice',
@@ -9,20 +8,21 @@ import { InvoiceApiService } from 'src/app/data/invoice-api.service';
   styleUrls: ['./report-invoice.component.scss'],
 })
 export class ReportInvoiceComponent implements OnInit {
-  @Input() id: number;
-  invoice: PrintInvoice | undefined;
+  // @Input() id: number;
+  // invoice: PrintInvoice | undefined;
+  @Input() result: ReportResult;
 
   constructor(
-    private invoiceApi: InvoiceApiService,
+    // private invoiceApi: InvoiceApiService,
     private modalController: ModalController
   ) {}
 
   ngOnInit() {}
 
   ionViewWillEnter() {
-    this.invoiceApi.getInvoiceById(this.id).subscribe({
-      next: (data) => (this.invoice = data),
-    });
+    // this.invoiceApi.getInvoiceById(this.id).subscribe({
+    //   next: (data) => (this.invoice = data),
+    // });
   }
 
   dismiss() {

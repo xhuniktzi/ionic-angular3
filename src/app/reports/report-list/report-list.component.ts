@@ -19,12 +19,12 @@ export class ReportListComponent implements OnInit {
     this.modalController.dismiss();
   }
 
-  async view(id: number) {
+  async view(result: ReportResult) {
     // console.log(id);
     const modal = await this.modalController.create({
       component: ReportInvoiceComponent,
       componentProps: {
-        id,
+        result,
       },
     });
 
